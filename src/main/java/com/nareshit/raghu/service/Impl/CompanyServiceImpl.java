@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nareshit.raghu.entity.Company;
+import com.nareshit.raghu.exception.CompanyNotFoundException;
 import com.nareshit.raghu.repo.CompanyRepository;
 import com.nareshit.raghu.service.ICompanyService;
 
@@ -31,8 +32,7 @@ public class CompanyServiceImpl implements ICompanyService {
 	public Company getOneCompany(Long id) {
 		Optional<Company> opt = repo.findById(id);
 		if(opt.isEmpty()) {
-			return null;
-			//throw new CompanyNotFoundException("Given '"+id+"' Not exist");
+			throw new CompanyNotFoundException("Given '"+id+"' Not exist");
 		} else {
 			return opt.get();
 		}
@@ -41,8 +41,6 @@ public class CompanyServiceImpl implements ICompanyService {
 	@Override
 	public List<Company> getAllCompanies() {
 		return repo.findAll();
-	
-
 	}
 
 }

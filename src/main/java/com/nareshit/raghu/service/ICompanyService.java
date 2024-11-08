@@ -10,4 +10,5 @@ public interface ICompanyService {
 	void updateCompany(Company cob);
 	Company getOneCompany(Long id);
 	List<Company> getAllCompanies();
+	//void deleteCompany(Long id);
 }
